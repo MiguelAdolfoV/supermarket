@@ -7,6 +7,7 @@
         <ion-button routerLink="/categories" routerDirection="root">Categorías</ion-button>
         <ion-button *ngIf="user?.rol === 'Administrador'" routerLink="/registro-compras" routerDirection="root">Registro de Compras</ion-button>
         <ion-button *ngIf="user?.rol === 'Administrador'" routerLink="/usuarios" routerDirection="root">Usuarios</ion-button>
+        <ion-button *ngIf="user?.rol === 'Administrador'" routerLink="/ventas" routerDirection="root">Ventas Realizadas</ion-button>
       </ion-buttons>
       <ion-buttons slot="end">
 

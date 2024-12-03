@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ventas Realizadas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let venta of ventas">
+      <ion-label>
+        <h2>Venta ID: {{ venta.idventa }}</h2>
+        <p>Cliente: {{ venta.cliente }}</p>
+        <p>Vendedor: {{ venta.vendedor }}</p>
+        <p>Comprobante: {{ venta.tipo_comprobante }} {{ venta.serie_comprobante }}-{{ venta.num_comprobante }}</p>
+        <p>Fecha: {{ venta.fecha_hora | date }}</p>
+        <p>Total: {{ venta.total | currency }}</p>
+        <p>Estado: {{ venta.estado }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

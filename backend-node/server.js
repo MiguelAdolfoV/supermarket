@@ -349,7 +349,32 @@ app.get('/usuarios', (req, res) => {
   });
 });
 
-
+//Lista de ventas
+app.get('/ventas', (req, res) => {
+  const query = `
+      SELECT 
+          v.idventa, 
+          p.nombre AS cliente, 
+          u.nombre AS vendedor, 
+          v.tipo_comprobante, 
+          v.serie_comprobante, 
+          v.num_comprobante, 
+          v.fecha_hora, 
+          v.total, 
+          v.estado 
+      FROM venta v
+      JOIN persona p ON v.idcliente = p.idpersona
+      JOIN usuario u ON v.idusuario = u.idusuario;
+  `;
+  db.query(query, (err, results) => {
+      if (err) {
+          console.error(err);
+          res.status(500).send('Error fetching sales');
+      } else {
+          res.json(results);
+      }
+  });
+});
 
 
 
