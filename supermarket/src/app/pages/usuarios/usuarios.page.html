@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+      <ion-label>
+        <h2>{{ user.nombre }}</h2>
+        <p>Email: {{ user.email }}</p>
+        <p>Teléfono: {{ user.telefono }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

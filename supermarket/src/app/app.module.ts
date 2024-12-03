@@ -14,6 +14,8 @@ import { ProductosComponent } from './components/modals/productos/productos.comp
 // Importar FormsModule para el uso de [(ngModel)]
 import { FormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
+
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000'; // URL base del backend
@@ -30,6 +32,7 @@ axios.defaults.withCredentials = true; // Habilitar el envío de cookies
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule, // Importar FormsModule para ngModel
+    HttpClientModule, // Asegúrate de que esté aquí
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
