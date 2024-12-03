@@ -336,8 +336,18 @@ app.put("/products/:productId", (req, res) => {
 
 
 
-
-
+//Lista de usuarios
+app.get('/usuarios', (req, res) => {
+  const query = 'SELECT idusuario, nombre, email, telefono FROM usuario';
+  db.query(query, (err, results) => {
+      if (err) {
+          console.error(err);
+          res.status(500).send('Error fetching users');
+      } else {
+          res.json(results);
+      }
+  });
+});
 
 
 
