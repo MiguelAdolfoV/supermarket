@@ -1,0 +1,25 @@
+<ion-app>
+  <!-- Barra de navegación con botones -->
+  <ion-header *ngIf="showNavbar">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-title>Supermarket</ion-title>
+        <ion-button routerLink="/categories" routerDirection="root">Categorías</ion-button>
+        <ion-button *ngIf="user?.rol === 'Administrador'" routerLink="/registro-compras" routerDirection="root">Registro de Compras</ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+
+        <!-- Botón Cerrar Sesión o Iniciar Sesión -->
+        <ng-container *ngIf="isLoggedIn; else loginButton">
+          <ion-button (click)="logout()">Cerrar Sesión</ion-button>
+        </ng-container>
+        <ng-template #loginButton>
+          <ion-button routerLink="/login">Iniciar Sesión</ion-button>
+        </ng-template>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Contenedor principal para las páginas -->
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>
