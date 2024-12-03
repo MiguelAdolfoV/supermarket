@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="products-cart-container">
+  <!-- Lista de productos -->
+  <div class="products-list">
+    <h2>Productos Disponibles</h2>
+    <div class="product-item" *ngFor="let product of products">
+      <img [src]="product.imagePath || 'assets/placeholder.png'" (error)="setDefaultImage($event)" alt="{{ product.nombre }}" />
+      <div class="product-details">
+        <h3>{{ product.nombre }}</h3>
+        <p>Precio: <strong>{{ product.precio_venta | currency }}</strong></p>
+        <p>Stock: {{ product.stock }}</p>
+        <div class="product-actions">
+          <input *ngIf="isLoggedIn;" type="number" [(ngModel)]="product.quantity" min="1" [max]="product.stock" />
+          <button *ngIf="isLoggedIn;" (click)="addToCart(product)" class="btn btn-add">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrito -->
+  <div class="cart">
+    <h2>Carrito de Compras</h2>
+    <div class="cart-item" *ngFor="let item of cart">
+      <div class="cart-details">
+        <p>{{ item.name }} ({{ item.quantity }})</p>
+        <p>Subtotal: <strong>{{ (item.price * item.quantity) | currency }}</strong></p>
+      </div>
+      <button (click)="removeItem(item.cartId)" class="btn btn-remove">Eliminar</button>
+    </div>
+    <h3>Total: <strong>{{ total | currency }}</strong></h3>
+    <button (click)="clearCart()" class="btn btn-clear">Vaciar Carrito</button>
+
+    
+    <div id="paypal-button-container"></div>
+ 
+ 
+
+  </div>
+</div>
